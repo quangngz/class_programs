@@ -221,6 +221,54 @@ def merge(left, right):
 - The time complexity can be evaluated as T(n) <= 2T(n/2) + O(n), which is O(n log n) using the master theorem.
 The advantage of merge sort is that it guarantess O(n log n) time complexity in all cases, and it is stable (does not change the order of equal elements).
 - Note that the space complexity is high, and if there's not enough space on the RAM, it may need to use disk space (by swapping some of the data onto disk), which makes it slower. 
+## Insertion sort
+- At every index i in array of size n, swap it with the number smaller number in front of it. 
+```
+
+void insertion_sort(int array[], int n) {
+  for (int i = 1; i < n; i++) {
+    int j = i; 
+    while (j > 0) {
+      if (array[j] < array[j - 1]) {
+        swap(array + j, array + j - 1); 
+        j--; 
+      }
+      else break; 
+    }
+  }
+}
+```
+## Selection sort
+- At every index i in an array of size n, find the minimum number on its right. Swap i with that minimum number's index. 
+```
+void selection_sort(int array[], int n) {
+  for (int i = 0; i < n - 1; i ++) {
+    for (int j = i + 1; j < n; j++) {
+      if (array[j] < array[i]) {
+        swap(array + j, array + i); 
+      }
+    }
+  }
+}
+```
+## Quick sort (2 way)
+1. Choose a pivot, define i pointing to the start of the list and end pointing to the end of the list. 
+2. We increment i until we find an element that's greater than the pivot <b>STOP</b>, and continue to decrement j until we find the element that's smaller than pivot. We swap them. 
+3. Continue until j is smaller than i. Then swap the pivot position with j. Now the pivot is guaranteed to be in its correct position.  
+4. Continue the process on each half, [start, pivot), and (pivot, end - 1]. Continue until 
+## Bubble sort
+- At every index, swap it with the adjacent index if in the incorrect order. This way, the highest number naturally "bubbles" up to the end of the list. 
+```
+void bubble_sort(int array[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    for (int j = 0; j < n - i - 1; j++) {
+        if (array[j] > array[j + 1]) {
+            swap(&array[j], &array[j + 1]);
+        }
+    }
+  }
+}
+```
 ## Hash Tables: 
 - This is a data structure that allows fast access to data by using a has function to map keys to values.
 $$hash(key) = index$$
