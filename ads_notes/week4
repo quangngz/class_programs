@@ -1,0 +1,75 @@
+# Trees
+## Inorder traversal: 
+Visit left subtree, then root, then right subtree. This gives a sorted order of the elements if run on a Binary Search tree.
+
+LEFT -> ROOT -> RIGHT
+```
+       A
+      / \
+     B   C
+    / \   \
+   D   E   F
+Inorder traversal: D, B, E, A, C, F
+```
+## Preorder traversal: 
+Visit root, then left subtree, then right subtree. This is useful for creating a copy of the tree. ROOT -> LEFT -> RIGHT
+
+It's like depth first search? 
+```
+       A
+      / \
+     B   C
+    / \   \
+   D   E   F
+Preorder traversal: A, B, D, E, C, F  
+```
+## Postorder traversal: 
+
+Visit left subtree, then right subtree, then root. This is useful for deleting the tree, as it ensures that the children are deleted before the parent. LEFT -> RIGHT -> ROOT
+```
+       A
+      / \
+     B   C
+    / \   \
+   D   E   F
+Postorder traversal: D, E, B, F, C, A
+```
+## Level order traversal: 
+Visit all nodes at the current level before moving on to the next level. This is useful for printing the tree in a breadth-first manner.
+
+
+
+## BST deletion
+Step1: Find the node.
+
+step2: delete the node. 
+
+
+- CASE 1: Node is a leaf. That would mean to simply delete it and nothing's going wrong. 
+
+- Case 2: Node has one child (either left or right)
+
+- Case 3: Node has both child. This is the complicated case. 
+    - You would need to find the smallest larger successor (the leftmost of the right subtree). This is the in-order successor. 
+
+### Complexity analysis of deletion
+Worst case: 
+- Time to find node: O(n)
+- Time to find in-order processer
+
+
+## Balanced Tree
+- Balanced trees - ensure a BST is perfectly balanced or almost alenced. The height of the tre is O(logn). 
+
+- A perfectly balanced tree: height of exactly logN
+- An approximatly balanced tree: height = O(logN)
+- The method should not increase the time complexity to build tree. - exception when we will traverse many times, and it's actually better to spend the extra costs at first. 
+- The tree should be built in O(NlogN), and searching should take O(logN). 
+- Balanced trees example: AVL, red-black, 2,3,4, B+ tree; 
+- Balanced(ish) trees... 
+- Balanced trees will give us a log(n) advantageous, and hence is desirable. 
+
+### AVL trees
+- Insert node and keep track of the height of subtrees at every node. Balanced through AVL rotation
+- The difference between subtrees height should be atmost 1. 
+- AVL guarantees a degree of balanced. 

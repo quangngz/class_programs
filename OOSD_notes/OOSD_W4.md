@@ -98,3 +98,54 @@ System.out.println(s == s3); // return false
 System.out.println(s.equals(s3)); // return true
 ```
 This should be note, that to compare any class objects, always use equals()
+
+
+# Command lines argument
+```
+public static void main(String args[]) {
+    // the args are what reading from the command line. 
+}
+```
+You can input to the command line by
+```
+java program arg1 arg2 arg3 ...
+```
+
+## Scanner class
+```
+import java.util.Scanner; 
+...
+Scanner scanner = new Scanner(System.in); 
+
+Double d = scanner.nextDouble(); 
+String s1 = scanner.next(); 
+int i1 = scanner.nextInt(); 
+
+System.out.format("%d %.2f", i1, d);
+```
+
+
+## Reading files
+```
+import java.io.FileReader; 
+import java.io.BufferedReader; 
+import java.io.IOException; 
+
+
+public class ReadFile {
+    public static void main(String args[]) {
+        try (BufferedReader br = 
+            new BufferedReader(new FileReader("test.txt"))) {
+                String text = null; 
+
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text); 
+                }
+            } catch {
+                e.printStackTrace();
+            }
+    }
+}
+```
+
+Scanner should be use 
