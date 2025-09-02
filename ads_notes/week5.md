@@ -1,3 +1,41 @@
+## Distribution Counting
+Distribution counting is an unusual sorting algorithm. It's similar to counting / bucket / bin sort
+
+Data structures needed by this algorithm are: arrays of per-key counts, cumulative key counts, sorting result.
+
+Its complexity is O(k + n), where k is the range of values and n is the size of the array.
+
+## Hash table
+Hash tables are a special kind of dictionary. 
+
+Keys are not inserted, but it is their hashed version that's inserted. 
+
+Hash function is a function that maps arbitrarily sized data into fixed sized values. 
+
+Fundamental operations are insert, and search, both are O(1) on average. 
+
+### Collision handling
+Common methods to handle collisions are: 
+- Linear chaining: use linked list to store colliding keys. 
+- linear probing: place colliding keys ino next available place. 
+- Double hashing: hashes the key again upon collision. 
+
+A question, if a hash table that's currently full, what should we do? Do we realloc, and insert the new items into the same table, or we realloc and rehash and insert, or we create an identical empty hash table and insert the new item there.   
+
+The correct answer are the last 2. 
+## More Trees
+### 2-3-4 Trees
+2-3-4 trees have 2,3, or 4 pointers for each node. 
+- Insertion always done on the bottom nodes. 
+- Nodes are broken up on the way down. 
+- Shits get messy because of promoting...
+
+### B+ Trees
+
+
+Hashed = 3
+[0,1,2,3,4,5,6,7]
+
 # Advanced shits in BST
 
 ## Balanced BST

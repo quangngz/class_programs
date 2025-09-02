@@ -1,4 +1,82 @@
 
+## Motivating examples
+Say yoou want to implement a chess board. 
+
+You would need to implement the pieces individually, as their own arrays.. 
+
+And write repeat codes.
+
+And is dificult to extend
+## Inheritance
+A form of abstraction that permits generalisations of similar atrtributes/methods of classes. 
+
+### Super class: 
+The parent - base class that provides general information to the child classes. 
+
+This class will contains the common attributes and methods
+### Child class
+The dependent class, inherits parent's attributes and methods. 
+
+This class automatically contains all the attributes and methods of the super class. 
+
+Additional methods can be defined here. 
+
+### Implementation
+`extends` keyword indicates when a child inherits from another. 
+
+```
+class Piece {
+    // Constructor
+    public Piece(arg1, arg2) {
+        ...
+    }
+    method1; 
+    method2; 
+}
+class Rook extends Piece {
+    public Rook(arg1, arg2, arg3){
+        super(arg1, arg2); 
+        arg3 = this.arg3; 
+    }
+    ownMethod1; 
+}
+// Rook can access to method1, method2, and ownMethod1. 
+```
+
+the `super` constructor must be the first statement inside the sublass constructor. 
+
+the `super` is like `this`, a reference to the object's parent class. 
+
+Parameters call insid ethe super constructor must match that of the constructor in the base class. 
+
+### Inheriting and Overriding methods
+```
+class Piece {
+    isValidMove(...) {
+        do 2 things. 
+    }
+}
+
+class Rook extends Piece{
+    @Overide
+    isValidMove(arg1, arg2) {
+        // Clean design via calling super here. 
+        if (!super.isValidMove(arg1, arg2)) {
+            return False; 
+        }
+        do 1 thing. 
+    }
+}
+```
+Overiding is declaring a method that texists in a superclass again in a subclass, with the same signatur. MEthods can only be overiden by subclasses. 
+
+Overloading: Declaring multiple methods with the same name, but give them different method signatures. Superclass methods can be overloaded in subclasses. 
+### Why Overide? 
+You can extend the functionality from a parent. 
+
+Subclasses can overide/change functionality of a parent. 
+
+Provides a general interface in superclass, with specific behaviour implemented in the subclass. 
 
 
 
