@@ -1,0 +1,99 @@
+# Advanced shits in BST
+
+## Balanced BST
+Tree whose height is O(logN)
+
+## 2-3 Tree
+Like a any noemal tree, but each node would be 2 values, and there's 3 pointers to the child. Leftmost is smaller than the 2, rightmost is larger, and in the middle would be the elements in between the 2 values. 
+
+
+## B and B+ Tree
+
+## 
+
+# Lec 2: Distribution counting
+
+## Sorting
+- Sorting is one of the most important algorithm. It is also one of the highest costs operations we are likely to run everyday.
+
+### Stable sort
+You iterate through each element, and for every element you would put them into their corresponding keys, or corresponding bins. 
+
+It's useful when you have multiple keys, and multple sorts. 
+
+For example, you want to sort the data by both name and their time. 
+
+### Sorting by counting
+Distribution counting is an unusual approach to sorting. It doesn't require key comparisons. 
+
+It results in stable sort
+
+But it requires the keys value to be within a certain range. 
+
+```
+[4,4,2,2,0,2,1,0,3,2,4,1,4,3,1,4]
+
+Keys = [0,1,2,3,4]
+Counts=[1,3,4,3,5] // Store the frequencies of each indices / keys. 
+cumulativeCount=[0,1,4,6,11]// Tells you how far you would need to put each keys in the new array. 
+```
+Complexity analysis
+
+Time: O(n) + O(range)
+
+Space: O(n) + O(range), specifically, it's 2*range + n
+
+Assuming range < n, we can consider it as O(n) (it's on the slower end of linear time complexity)
+
+If range > n, its slower somehow due to hardware 
+
+Other non-comparison based soting algorithms
+- LSD radix sort
+- MSD radix sort
+
+Draw backs:
+- take extra space. Generally is less flexile than comparison-based. (like distribution counting is harder to code?)
+
+
+# Lec 2: Hashing
+Until right now, we have been implementing dictionary search based on an array. 
+
+But you can make it O(1) to search, with a caveat. Using the hash function (probabilistic function)
+
+## Thought experiment
+- If you know the keys, e.g. employees name, and even the length of the name
+- One way you think can be to simply list every combination of the letters of that length and store them into indices starting from 1. 
+- But that would be disastrous - not really, just fuck tons of memories required. 
+- That's where a hash function can be used 
+
+- You can think of using a circular array, i.e. squashing the key to fit into an array of limited size. Like a[key % 10]. 
+- You can use a function to map keys evenly to this range. 
+- But in any cases, there's the case of clashing, i.e. multiple keys hashed to the same value. 
+
+Bad example of a hash function
+```
+A[100]; hash(key)  = 1; 
+A[100]; hash(key) = key % 10; 
+A[100]; hash(key) = key % 100; 
+So much collision, since you only have 10 positions (0 - 9). 
+```
+
+A better example would be: 
+```
+A[97]; hash(key) = (key * BIGPRIME) % 97
+```
+
+Prime numbers disrupt patterns in data, and spreads it across the table. 
+
+When you times a prime, i.e. a number that doesn't have a divider, while using a modulo, essentially a divider, you get a Quasi-random behaviour for your hash function. 
+
+## Hash function
+`int hash(keytype key);`
+
+`A[hash(item->key)] = item;`
+
+Now that you've seen the above example, you can simply think, just use a larger prime number, and a larger modulo. 
+
+But what if you want to store surnames, of size 30000? 
+
+
